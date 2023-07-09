@@ -1,0 +1,16 @@
+During development:
+Handle the headers correctly
+storing sensitive content
+Hashing passwords + salt: bcrypt
+password encryption
+Safe defaults and dynamic typing
+Race conditions
+Use prepared statements
+Safe file handling
+Use HTTPS
+XSS attacks: check xss-clean, sanitize user input 
+CSRF attacks: csurf
+SQL Injections: escape queries, prepared statements
+add captcha
+
+During deployment:
