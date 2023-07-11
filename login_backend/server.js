@@ -29,13 +29,19 @@ app.use(express.json());
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 
-app.use(cors());
+var corsOptions = {
+    origin: 'https://localhost:3000',
+    credentials: true, // ******* DO NOT set credentials attr to true for all the paths
+  }
+app.use(cors(corsOptions));
 
 //allow only certain method types here for better security
 app.use(loginRouter);
 app.use(registerRouter);
 app.get('/check',(req,res)=>{
-    res.send("hey");
+    res.cookie('loggedIn','123',{ SameSite: 'None', httpOnly: true, secure: true });
+    // res.redirect('/dashboard')
+    return res.status(200).send({message:"Login success"});
 })
 
 //app.listen(8000, ()=>{console.log(`app listening on port ${port}`)});

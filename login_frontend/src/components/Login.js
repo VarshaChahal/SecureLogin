@@ -1,21 +1,28 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import 'styles/login.css';
+import Cookies from 'universal-cookie';
 
 let login_url=process.env.REACT_APP_LOGIN_URL;
 
-function loginUser(credentials){
+function loginUser(cred){
     console.log("login url is ",login_url);
     return fetch(process.env.REACT_APP_LOGIN_URL,{
         method:'POST',
         headers:{
             'Content-Type':'application/json',
         },
-        credentials: 'same-site', //to send or receive cookies, use 'same-site' to allow cookies only from the same domain. use 'include' to allow cookies from any domain.
-        body:JSON.stringify(credentials)
+        credentials: 'include', //how is it different in request and response
+       // credentials: 'same-site', //to send or receive cookies, use 'same-site' to allow cookies only from the same domain. use 'include' to allow cookies from any domain.
+        body:JSON.stringify(cred)
     }) 
     .then(response=>{
+        console.log("return status is ",response.status);
+        console.log("response status is ",response);
+
         if(response.status==200){
+           // const cookies = new Cookies(req.headers.cookie);
+           console.log("cookie from backend, ", response);
             let dataReceived = response.json();
             return dataReceived;
         }else if(response.status == 401){

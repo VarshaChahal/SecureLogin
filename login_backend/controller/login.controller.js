@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt');
 const UserIdentity = require('../model/UserIdentity.model');
 
 const login = (req,res)=>{
+    console.log("received request. Body: ", req.body);
     UserIdentity.findOne({
         _username: req.body.username
     })
@@ -15,7 +16,7 @@ const login = (req,res)=>{
                 return res.status(401).send({message:"Unauthorized! "});
             }
             else {
-                res.setHeader('Set-Cookie','loggedIn=true');
+                res.cookie('loggedIn','123',{ SameSite: 'None', httpOnly: true, secure: true });
                // res.redirect('/dashboard')
                 return res.status(200).send({message:"Login success"});
             }
