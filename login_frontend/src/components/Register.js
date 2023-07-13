@@ -1,5 +1,6 @@
 import React , {useRef, useState} from 'react';
 import { useNavigate } from "react-router-dom";
+import 'styles/register.css';
 
 let register_url=process.env.REACT_APP_REGISTER_URL;
 
@@ -55,17 +56,18 @@ export default function Register(props){
     return (
         <div className='register'>
             <form onSubmit={handleRegistration}>
+                <h2>Register</h2>
                 <label htmlFor="username">
-                    <p>Username</p>
+                    <p className='showInline' >Username</p>
                     <input type="text" name="username" id="register-username" ref={usernameRef}/>  
                 </label>
                 <label htmlFor="password">
-                    <p>Password</p>
+                    <p className='showInline' >Password</p>
                     <input type="password" name = "password" id="register-password" ref={passwordRef} />
                 </label>
                 <label htmlFor="confirm-password">
                     <p>Confirm password</p>
-                    <input type="password" name="confirm-password" id="confirm-password" ref = {cofirmPasswordRef}/>
+                    <input type="password" name="confirm-password" id="confirm-password" ref={cofirmPasswordRef}/>
                 </label>
                 <button type="submit" id= "register-submit">Submit</button>
             </form>
