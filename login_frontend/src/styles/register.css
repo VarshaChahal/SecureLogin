@@ -1,0 +1,27 @@
+.register{
+    padding-top: 20%;
+    font-family: arial;
+    font-size: 15px;
+    margin: 25px;
+    width: 300px;
+    height: 200px;
+    margin: 0 auto;
+  }
+
+  #register-submit{
+    height: 30px;
+    width: 220px;
+    margin: 20px 13% auto;
+    background-color: rgb(162, 210, 233);
+    border-style: hidden;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+h2{
+    padding-left: 38%;
+}
+
+.showInline{
+    padding-left: 125px;
+}
