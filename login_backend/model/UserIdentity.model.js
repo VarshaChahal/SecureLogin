@@ -19,6 +19,6 @@ userIdentitySchema.methods.validateUser = function(password){
     return bcrypt.compareSync(password,this.password);
 };
 
-var UserIdentity = mongoose.model('userIdentity',userIdentitySchema);
+let UserIdentity = mongoose.model('userIdentity',userIdentitySchema);
 
 module.exports = UserIdentity;

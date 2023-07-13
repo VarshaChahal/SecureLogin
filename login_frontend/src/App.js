@@ -11,7 +11,6 @@ import { useState } from 'react';
 
 function App() {
   const [loginSuccess, setLoginSuccess] = useState();
-  const [registrationSuccess, setRegistrationSuccess] = useState();
   if(loginSuccess){
     return <Dashboard/>
   } 

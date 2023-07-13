@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import ReactDOM from 'react-dom/client';
 import 'styles/login.css';
-import Cookies from 'universal-cookie';
 
 let login_url=process.env.REACT_APP_LOGIN_URL;
 
@@ -21,7 +19,6 @@ function loginUser(cred){
         console.log("response status is ",response);
 
         if(response.status==200){
-           // const cookies = new Cookies(req.headers.cookie);
            console.log("cookie from backend, ", response);
             let dataReceived = response.json();
             return dataReceived;

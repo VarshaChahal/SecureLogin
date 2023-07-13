@@ -1,5 +1,3 @@
-var logger = require('../config/winston.config.js');
-const bcrypt = require('bcrypt');
 const UserIdentity = require('../model/UserIdentity.model');
 
 const login = (req,res)=>{
@@ -25,7 +23,6 @@ const login = (req,res)=>{
     .catch(error=>{
         console.log(error);
         res.status(500).send({message: "An Internal Server error has occurred"});
-        return;
     });
 }
 

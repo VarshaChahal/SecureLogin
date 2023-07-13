@@ -15,7 +15,6 @@ function ConnectMongoDB(){
         });
     
     
-    const connection = mongoose.connection;
     
     mongoose.connection.on('error', err =>{
         console.log("handling the errors that occur after connection was established")

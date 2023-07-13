@@ -23,7 +23,7 @@ const loginUser = (credentials) => {
    }
 
    const registerUSer =  (userDetails) => {
-    let registrationSuccess = fetch(register_url, {
+    fetch(register_url, {
         method: 'POST',
         headers:{
             'Content-Type':'application/json'
