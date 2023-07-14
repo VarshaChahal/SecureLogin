@@ -15,9 +15,9 @@ function App() {
     return <Dashboard/>
   } 
 
-  if(registrationSuccess){
-    return <Login setLoginState={setLoginState}/>;
-  }
+  //if(registrationSuccess){
+   // return <Login setLoginState={setLoginState}/>;
+ // }
   function setLoginState(value){
     setLoginSuccess(value);
   }
