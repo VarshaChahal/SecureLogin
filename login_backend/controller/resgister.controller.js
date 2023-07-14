@@ -3,16 +3,15 @@ const UserIdentity = require('../model/UserIdentity.model');
 let logger = require('../config/winston.config.js');
 
 const register = async (req,res) =>{
-    console.log("request is ",req.body.username);
     let salt = bcrypt.genSaltSync();
     const userIdentity = new UserIdentity({
         _username : req.body.username,
-        _password: bcrypt.hashSync(req.body.password, salt,null),
+        _password:  bcrypt.hashSync(req.body.password+'', salt,null),
         _salt : salt
     });
 
     UserIdentity.findOne({
-        _username: req.body.username
+        _username: { $eq: req.body.username}
     })
     .then((user_found)=>{
         if(user_found) {
