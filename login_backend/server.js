@@ -1,4 +1,5 @@
 const cors = require('cors');
+const rateLimit = require('express-rate-limit');
 const loginRouter = require('./routes/login.route.js');
 const registerRouter = require('./routes/register.route.js');
 
@@ -34,6 +35,12 @@ let corsOptions = {
     credentials: true, // ******* DO NOT set credentials attr to true for all the paths
   }
 app.use(cors(corsOptions));
+
+let limiter = rateLimit({
+  windowMs: 1*60*1000, //1 minute
+  max: 100
+})
+app.use(limiter);
 
 //allow only certain method types here for better security
 app.use(loginRouter);
