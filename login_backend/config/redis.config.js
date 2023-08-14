@@ -13,7 +13,7 @@ const connectRedisDB = () =>{
         password: redis_password,
         socket: {
             host: redis_host,
-            port: 16255
+            port: redis_port
         } 
     });
 
