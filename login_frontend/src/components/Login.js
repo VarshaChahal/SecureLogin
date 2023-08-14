@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import 'styles/login.css';
 
 let login_url=process.env.REACT_APP_LOGIN_URL;
 
 function loginUser(cred){
     console.log("login url is ",login_url);
-    return fetch(process.env.REACT_APP_LOGIN_URL,{
+    return fetch(login_url,{
         method:'POST',
         headers:{
             'Content-Type':'application/json',
         },
         credentials: 'include', //how is it different in request and response
-       // credentials: 'same-site', //to send or receive cookies, use 'same-site' to allow cookies only from the same domain. use 'include' to allow cookies from any domain.
+      //  credentials: 'include', //to send or receive cookies, use 'same-site' to allow cookies only from the same domain. use 'include' to allow cookies from any domain.
         body:JSON.stringify(cred)
     }) 
     .then(response=>{
@@ -34,13 +35,15 @@ function loginUser(cred){
         return data;
     })
     .catch((error)=>{
-        return;
+        console.log("error");
+        return ;
     });
         
    }
 
 export default function Login(props){
-   let setLoginState = props.setLoginState;
+  // let setLoginState = props.setLoginState;
+   const navigate = useNavigate();
 
    const [username, setUsername] = useState();
    const [password, setPassword] = useState();
@@ -51,10 +54,9 @@ export default function Login(props){
             username,
             password
         });
-        console.log("login success fetchh return is, ", loginSuccess );
         if(loginSuccess) {
-            console.log("setting login success state");
-            setLoginState(loginSuccess);
+            navigate("/dashboard");
+           // setLoginState(loginSuccess);
         }
     }
 
@@ -71,7 +73,7 @@ export default function Login(props){
                 <input type="password" id="password" onChange={e=>setPassword(e.target.value)} />
             </label>
             <div>
-                <button type="submit" id="login-submit">Submit</button>
+                <button type="submit" id="submit">Submit</button>
             </div>
         </form>
         </div>

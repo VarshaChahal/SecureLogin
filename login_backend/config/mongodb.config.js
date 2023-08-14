@@ -6,16 +6,14 @@ let mongo_user = process.env.MONGODB_USER;
 let mongo_password = process.env.MONGODB_PASSWORD;
 let mongo_url = process.env.MONGODB_URL;
 
-function ConnectMongoDB(){
+function connectMongoDB(){
     const uri = `mongodb+srv://${mongo_user}:${mongo_password}@${mongo_url}`;
 
-    mongoose.connect(uri, {useNewUrlParser: true, dbName:'LoginDB'}).then(res=>console.log("connected to MongoDB server"))
+    let db = mongoose.connect(uri, {useNewUrlParser: true, dbName:'LoginDB'}).then(res=>console.log("connected to MongoDB server"))
         .catch((err)=>{
             console.log("an error occured while connecting to the mongoDB database "+ err);
         });
-    
-    
-    
+        
     mongoose.connection.on('error', err =>{
         console.log("handling the errors that occur after connection was established")
     });
@@ -26,8 +24,10 @@ function ConnectMongoDB(){
     //use this connection object in other files
     
     //https://mongoosejs.com/docs/connections.html#connection-string-options
+
+    return db; 
 }
 
-module.exports = ConnectMongoDB;
+module.exports = connectMongoDB;
 
 

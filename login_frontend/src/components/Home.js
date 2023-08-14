@@ -1,13 +1,11 @@
 import React from 'react';
+import { useNavigate, Link } from "react-router-dom";
+
 
 export default function Home(){
     return(
-        <div id="home">
-            <h1>Home here!</h1>
-            <form>
-                <button>Login</button>
-            </form>
-
+        <div>
+            <p>Hey there!</p>
         </div>
     )
 }

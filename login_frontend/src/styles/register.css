@@ -7,7 +7,7 @@
     margin: 0 auto;
   }
 
-  #register-submit{
+ #submit{
     height: 30px;
     width: 220px;
     margin: 20px 13% auto;
@@ -17,10 +17,19 @@
     font-size: 15px;
 }
 
-h2{
-    padding-left: 38%;
+#register-heading{
+    padding-left: 35%;
 }
 
-.showInline{
-    padding-left: 125px;
+.password-container{
+    position: relative;
+    
 }
+
+.show-password{
+    position: absolute;
+    top: 63%;
+    right: 1%;
+    cursor: pointer;
+  }
+

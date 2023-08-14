@@ -15,9 +15,7 @@ input{
     font-size: 15px;
 }
 
-p{
-    padding-left: 35%;
-}
+
 
 #login-submit{
     height: 30px;
@@ -29,6 +27,3 @@ p{
     font-size: 15px;
 }
  
-h2{
-    padding-left: 6%;
-}

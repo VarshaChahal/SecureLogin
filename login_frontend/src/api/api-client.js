@@ -1,6 +1,5 @@
 let protocol = process.env.HTTPS?'https':'http';
 let host = 'localhost';
-let backend_url = `${protocol}://${host}:8080/`;
 
 const loginUser = (credentials) => {
     let login_url = backend_url +'api/auth/login'

@@ -3,6 +3,7 @@ const UserIdentity = require('../model/UserIdentity.model');
 let logger = require('../config/winston.config.js');
 
 const register = async (req,res) =>{
+    console.log("request body: ",req.body);
     let salt = bcrypt.genSaltSync();
     const userIdentity = new UserIdentity({
         _username : req.body.username,

@@ -1,3 +1,4 @@
+const { ServerSession } = require('mongodb');
 const UserIdentity = require('../model/UserIdentity.model');
 const bcrypt = require('bcrypt');
 
@@ -18,8 +19,16 @@ const login = (req,res)=>{
             if(!passwordValid){
                 return res.status(401).send({message:"Unauthorized!"});
             }
-            else {
-                res.cookie('loggedIn','123',{ SameSite: 'None', httpOnly: true, secure: true });
+            else {             
+                //res.cookie('loggedIn','123',{ SameSite: 'None', httpOnly: true, secure: true });
+                const session = req.session;
+                if(session.username && session.authenticated){
+                    console.log("user is authenticated");
+                }else{
+                    console.log("user not authenticated.")
+                    session.authenticated = true;
+                    session.username = req.body.username;
+                }
                // res.redirect('/dashboard')
                 return res.status(200).send({message:"Login success"});
             }

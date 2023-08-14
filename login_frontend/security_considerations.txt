@@ -14,3 +14,8 @@ SQL Injections: escape queries, prepared statements
 add captcha
 
 During deployment:
+
+
+Development:
+    Always hash the password before checking if a user exists or not, if you hash it after you check for the user, the attacker can tell by the difference in time taken to reply to the attacker.
+    Input data sanitization
